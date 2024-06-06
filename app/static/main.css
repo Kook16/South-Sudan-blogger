@@ -1,0 +1,27 @@
+/* .profile-img {
+    max-width: 150px;
+    height: auto;
+} */
+.profile-picture {
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Adjust the size as needed */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image covers the entire container */
+}
+
+.media {
+    background-color: #f9f9f9;
+}
+
+.media:hover {
+    background-color: #f1f1f1;
+}
+
+.media-body h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.media-body p {
+    font-size: 1rem;
+}

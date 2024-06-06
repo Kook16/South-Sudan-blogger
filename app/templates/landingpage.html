@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Welcome to Our Blog!</h1>
+        <p class="lead">Discover, Share, and Engage with Amazing Content</p>
+        <hr class="my-4">
+        <p>Join our community or log in to get started.</p>
+        <a class="btn btn-primary btn-lg mx-2" href="{{ url_for('register') }}" role="button">Sign Up</a>
+        <a class="btn btn-secondary btn-lg mx-2" href="{{ url_for('login') }}" role="button">Log In</a>
+    </div>
+</div>
+{% endblock %}

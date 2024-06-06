@@ -1,0 +1,107 @@
+{% extends "index.html" %}
+
+{% block title %}Messages{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Messages</h1>
+    <div class="message-list">
+        {% for message in messages %}
+            <div class="message-item {% if message.sender_id == current_user.id %}sent{% else %}received{% endif %}">
+                <div class="message-info">
+                    <img src="{{ url_for('static', filename='images/' + message.sender.img) }}" alt="{{ message.sender.username }}'s Profile Picture" class="profile-pic">
+                    <div class="message-details">
+                        <strong>{{ message.sender.username }}</strong>
+                        <small class="text-muted">{{ message.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+                    </div>
+                </div>
+                <div class="message-body">
+                    {{ message.body }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.message-list {
+    margin-bottom: 20px;
+}
+
+.message-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    max-width: 70%;
+}
+
+.message-item.sent {
+    flex-direction: row-reverse;
+    background-color: #d1ffd6;
+    margin-left: auto;
+}
+
+.message-item.received {
+    background-color: #f1f1f1;
+    margin-right: auto;
+}
+
+.message-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.message-item.sent .profile-pic {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+.message-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.message-item.sent .message-details {
+    align-items: flex-end;
+}
+
+.message-body {
+    max-width: 100%;
+    word-wrap: break-word;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.message-item.sent .message-body {
+    background-color: #d1ffd6;
+}
+
+.message-item.received .message-body {
+    background-color: #f1f1f1;
+}
+
+.form-group {
+    margin-top: 20px;
+}
+</style>
+{% endblock %}

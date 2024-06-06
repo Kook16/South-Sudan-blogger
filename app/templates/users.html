@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2>Users</h2>
+    <ul class="list-group">
+        {% for user in users %}
+            <li class="list-group-item">
+                <a href="{{ url_for('conversation', username=user.username) }}">{{ user.username }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

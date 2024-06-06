@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <h1>Inbox</h1>
+    <ul class="list-group">
+        {% for user in users %}
+            <li class="list-group-item">
+                <a href="{{ url_for('conversation', recipient_id=user.id) }}">
+                    {{ user.username }}
+                </a>
+                <span class="badge badge-primary">{{ user_unread_counts[user.username] }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

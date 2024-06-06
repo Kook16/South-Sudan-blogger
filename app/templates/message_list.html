@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2>Your Messages</h2>
+    <ul class="list-group">
+        {% for message in messages %}
+            <li class="list-group-item {% if not message.read %}list-group-item-info{% endif %}">
+                <a href="{{ url_for('conversation', username=message.author.username) }}">
+                    <strong>{{ message.author.username }}:</strong> {{ message.content[:30] }}...
+                    <small class="text-muted float-right">{{ message.timestamp.strftime('%Y-%m-%d %H:%M') }}</small>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
