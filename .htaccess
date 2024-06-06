@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^(.*)$ flask_app.wsgi/$1 [QSA, PT, L]
